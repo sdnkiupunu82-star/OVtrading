@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>StockAnalyzer Pro V3.2</title>
+<meta name="description" content="Premium stock intelligence dashboard with AI analytics, backtesting, risk engine and paper trading."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo"><span>↗</span></div><div class="brand-copy"><b>StockAnalyzer</b><span>PRO <em>V3.2</em></span></div></div>
+  <div class="live-status"><i></i><span>MARKET INTELLIGENCE</span><b>PAPER</b></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav id="nav">
+    <button class="nav active" data-page="dashboard"><span class="nav-icon">⌂</span><span>Dashboard</span></button>
+    <button class="nav" data-page="market"><span class="nav-icon">◈</span><span>Market</span></button>
+    <button class="nav" data-page="analysis"><span class="nav-icon">◒</span><span>Analisis Saham</span></button>
+    <button class="nav" data-page="screener"><span class="nav-icon">⌕</span><span>Stock Screener</span></button>
+    <button class="nav" data-page="prediction"><span class="nav-icon">✦</span><span>AI Prediction</span></button>
+    <div class="nav-label">TRADING LAB</div>
+    <button class="nav" data-page="robot"><span class="nav-icon">◉</span><span>Paper Robot</span></button>
+    <button class="nav" data-page="portfolio"><span class="nav-icon">▣</span><span>Portfolio</span></button>
+    <button class="nav" data-page="backtest"><span class="nav-icon">◫</span><span>Backtesting</span></button>
+    <div class="nav-label">INTELLIGENCE</div>
+    <button class="nav" data-page="news"><span class="nav-icon">◌</span><span>News & Sentiment</span></button>
+    <button class="nav" data-page="alerts"><span class="nav-icon">♢</span><span>Smart Alerts</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="probox"><div class="pro-head"><span>V3.2</span><b>PRO ENGINE</b></div><p>AI signal · Risk engine · Backtest · Paper execution</p><div class="engine-row"><i></i>All systems operational</div></div>
+    <small>StockAnalyzer Pro · Build 3.2</small>
+  </div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div class="mobile-title"><div class="mini-logo">↗</div>StockAnalyzer</div>
+  <div class="search"><span>⌕</span><input id="globalSearch" placeholder="Cari saham · BBCA, BBRI, BMRI, TLKM..."/><kbd>ENTER</kbd></div>
+  <div class="market-clock"><i></i><span>IDX MARKET</span><b>SIMULATED</b></div>
+  <div class="top-actions"><button class="iconbtn" onclick="navigate('alerts')">♢<i>3</i></button><div class="user"><span class="avatar">I</span><span>Investor</span><small>⌄</small></div></div>
+</header>
+<div class="v31-banner"><span class="pulse"></span><b>V3.2 PREMIUM UI</b><span>Backtest + Risk Engine + Paper Robot</span><strong>LIVE BROKER: LOCKED</strong></div>
+<section class="content" id="content"></section>
+</main></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>
