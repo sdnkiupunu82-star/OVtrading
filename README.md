@@ -58,28 +58,40 @@ Stop the stack with:
 docker compose down
 ```
 
-## 3. Deploy the backend on Railway
+## 3. Deploy the full application on Railway
 
-The repository contains `railway.json` and `backend/Dockerfile`.
+This V3.2 package is configured so **one Railway service serves both the frontend and FastAPI backend**. The repository root contains the production `Dockerfile`, and `railway.json` points Railway to that file.
 
 1. Push the repository to GitHub.
-2. Create a Railway project.
-3. Deploy the GitHub repository.
-4. Add a PostgreSQL service.
-5. Set Railway variables, at minimum:
+2. Create a Railway project and deploy the GitHub repository.
+3. Add a **PostgreSQL** service to the same Railway project.
+4. In the StockAnalyzer service, add these variables:
 
 ```text
 DATABASE_URL=<Railway PostgreSQL connection string>
-CORS_ORIGINS=<your frontend URL>
 DATA_PROVIDER=demo
 BROKER_MODE=paper
 IDX_API_KEY=
+CORS_ORIGINS=*
 ```
 
-6. Railway will build the backend using `backend/Dockerfile`.
-7. Verify `/api/health`.
+`DATABASE_URL` is required for persistent paper-trading data. Do not commit the real database URL or API keys to GitHub.
 
-The current Docker Compose setup serves frontend + API together. For a production split deployment, serve `frontend/` from a static host and point it to the API URL with `window.STOCKANALYZER_API` before deployment.
+5. Railway will build the root `Dockerfile`. The image contains both `backend/` and `frontend/`.
+6. The public Railway URL opens the StockAnalyzer web interface directly.
+7. The API health endpoint is:
+
+```text
+https://YOUR-RAILWAY-DOMAIN/api/health
+```
+
+The application now retries the PostgreSQL connection during startup to tolerate a short Railway database startup delay.
+
+### Important
+
+- `DATA_PROVIDER=demo` uses synthetic market data and is not live IDX data.
+- `BROKER_MODE=paper` keeps live broker execution disabled.
+- For a production frontend/backend split, `window.STOCKANALYZER_API` can still be used, but it is not required for the default Railway deployment.
 
 ## 4. GitHub Pages limitation
 
@@ -106,6 +118,7 @@ This project is a research and paper-trading application. It is not financial ad
 ```text
 stockanalyzer-pro/
 ├── .github/workflows/validate.yml
+├── Dockerfile
 ├── backend/
 │   ├── app/
 │   │   ├── api/
